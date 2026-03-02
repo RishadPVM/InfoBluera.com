@@ -146,7 +146,7 @@ export default function Footer() {
 
                             <h3 className="text-3xl mb-2">Ready to Start?</h3>
                             <p className="text-body text-text-tertiary mb-10">
-                                Send us a message and we'll get back to you shortly.
+                                Send us a message and we&apos;ll get back to you shortly.
                             </p>
 
                             <form onSubmit={handleSubmit} className="space-y-4">
