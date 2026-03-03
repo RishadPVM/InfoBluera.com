@@ -80,7 +80,7 @@ const containerVariants = {
 
 const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 export default function Services() {
@@ -130,7 +130,7 @@ export default function Services() {
                     viewport={{ once: true, margin: "-50px" }}
                     className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
-                    {SERVICES.map((service, index) => (
+                    {SERVICES.map((service) => (
                         <motion.div
                             key={service.title}
                             variants={itemVariants}

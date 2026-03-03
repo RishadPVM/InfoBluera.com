@@ -39,14 +39,16 @@ body {
 
 /* Glassmorphism utilities */
 .glass {
-  background: rgba(255, 255, 255, 0.05); /* Match AppColours.glassWhite / surface with opacity */
+  background: rgba(255, 255, 255, 0.05);
+  /* Match AppColours.glassWhite / surface with opacity */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-dark {
-  background: rgba(15, 23, 42, 0.6); /* surface with opacity */
+  background: rgba(15, 23, 42, 0.6);
+  /* surface with opacity */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -54,7 +56,8 @@ body {
 
 /* Base Heading Styles from original implementation */
 h1 {
-  font-size: clamp(3rem, 5vw, 4rem); /* 48-64px */
+  font-size: clamp(3rem, 5vw, 4rem);
+  /* 48-64px */
   line-height: 1.1;
   letter-spacing: -0.02em;
   font-weight: 800;
@@ -62,7 +65,8 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2.25rem, 4vw, 2.625rem); /* 36-42px */
+  font-size: clamp(2.25rem, 4vw, 2.625rem);
+  /* 36-42px */
   line-height: 1.2;
   letter-spacing: -0.01em;
   font-weight: 700;
@@ -70,43 +74,41 @@ h2 {
 }
 
 h3 {
-  font-size: clamp(1.5rem, 2.5vw, 1.75rem); /* 24-28px */
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+  /* 24-28px */
   line-height: 1.3;
   font-weight: 600;
   color: var(--color-text-primary);
 }
 
 h4 {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
+  /* 20px */
   line-height: 1.4;
   font-weight: 600;
   color: var(--color-text-primary);
 }
 
 .text-body-large {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
+  /* 18px */
   line-height: 1.6;
   font-weight: 400;
   color: var(--color-text-secondary);
 }
 
 .text-body {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
+  /* 16px */
   line-height: 1.6;
   font-weight: 400;
   color: var(--color-text-secondary);
 }
 
 .text-caption {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem;
+  /* 14px */
   line-height: 1.5;
   font-weight: 400;
   color: var(--color-text-tertiary);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, var(--color-primary), #4F46E5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }

@@ -1,108 +1,87 @@
 "use client";
 
-import { GlassButton, GradientButton } from "@/components/ui/Buttons";
 import { motion } from "framer-motion";
-import { Code2 } from "lucide-react";
-import dynamic from "next/dynamic";
-
-// Dynamically import the entire 3D canvas with SSR disabled
-// This is REQUIRED because @react-three/fiber uses WebGL APIs unavailable on the server
-const ThreeCanvas = dynamic(() => import("./3d/ThreeCanvas"), {
-    ssr: false,
-    loading: () => (
-        <div className="w-full h-full flex items-center justify-center">
-            <Code2 className="w-16 h-16 text-primary/50 animate-pulse" />
-        </div>
-    ),
-});
+import Image from "next/image";
 
 export default function Hero() {
     return (
         <section
             id="home"
-            className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20"
+            className="relative h-screen w-full overflow-hidden bg-[#040718]" //bg-[#020617]
         >
-            {/* Background Gradient Base */}
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background pointer-events-none" />
+            {/* Grid */}
+            <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-            {/* Hero Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
+            {/* Content */}
+            <div className="relative z-10 h-full flex flex-col items-center justify-start pt-32 text-center px-6">
 
-                <div className="flex flex-col items-start text-left pt-10 lg:pt-0">
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-3xl md:text-6xl lg:text-[80px] font-bold text-white leading-[1.05] max-w-5xl"
+                >
+                    Engineering the Digital Core <br className="hidden md:block" />
+                    of Tomorrow.
+                </motion.h1>
 
+                <motion.p
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="mt-6 text-base md:text-lg text-white/40 max-w-3xl"
+                >
+                    We architect high-performance software systems and cloud ecosystems that power the world's most competitive digital enterprises.
+                </motion.p>
+            </div>
+
+            {/* Beam Image — Natural Ratio Controlled */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-[78%] -translate-y-1/2 pointer-events-none z-0">
+                <Image
+                    src="/blue-energy.png"
+                    alt="Energy Beam"
+                    width={2200}
+                    height={980}
+                    priority
+                    className="mix-blend-screen max-w-none"
+                />
+            </div>
+
+            {/* Button Centered in Beam Core */}
+            <div className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 z-10">
+                <a
+                    href="#contact"
+                    className="px-10 py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.25)]"
+                >
+                    Contact us
+                </a>
+            </div>
+
+            {/* Stats */}
+            <div className="absolute bottom-16 w-full flex justify-center gap-16 text-center z-10">
+                {[
+                    { label: "High-Performance", value: "10ms" },
+                    { label: "Military-Grade", value: "E2EE" },
+                    { label: "Full-Scaling", value: "24/7" },
+                    { label: "Global Reach", value: "Tier-4" }
+                ].map((stat, i) => (
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 shadow-[0_0_20px_rgba(37,99,235,0.1)] mb-8"
+                        key={i}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.6 + i * 0.1 }}
+                        className="flex flex-col items-center"
                     >
-                        <motion.div
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ repeat: Infinity, duration: 2 }}
-                        >
-                            <Code2 className="w-4 h-4 text-accent" />
-                        </motion.div>
-                        <span className="text-xs md:text-sm font-bold tracking-widest text-primary-light uppercase">
-                            Premium IT Solutions
+                        <span className="text-2xl md:text-3xl font-bold text-white">
+                            {stat.value}
+                        </span>
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 mt-1">
+                            {stat.label}
                         </span>
                     </motion.div>
-
-                    {/* Main Headline */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="mb-6 font-sans text-5xl md:text-6xl lg:text-7xl"
-                    >
-                        Building the <br />
-                        <span className="text-gradient">Digital Future</span>
-                    </motion.h1>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                        className="mb-12 text-body-large md:text-xl max-w-xl"
-                    >
-                        We craft high-performance websites, mobile apps, and enterprise software that drives growth. Trusted by industry leaders.
-                    </motion.p>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                        className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-                    >
-                        <GradientButton onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
-                            Start Your Project
-                        </GradientButton>
-                        <GlassButton onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}>
-                            View Portfolio
-                        </GlassButton>
-                    </motion.div>
-
-                </div>
-
-                {/* 3D Canvas Area */}
-                <motion.div
-                    className="h-[400px] lg:h-[600px] relative w-full flex items-center justify-center pointer-events-none lg:pointer-events-auto"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                >
-                    {/* Ambient Glow */}
-                    <motion.div
-                        className="absolute w-[250px] h-[250px] bg-primary/20 rounded-full blur-[60px]"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                    />
-
-                    <div className="w-full h-full relative z-10">
-                        <ThreeCanvas />
-                    </div>
-                </motion.div>
-
+                ))}
             </div>
+
         </section>
     );
 }
