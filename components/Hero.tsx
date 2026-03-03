@@ -10,16 +10,19 @@ export default function Hero() {
             className="relative h-screen w-full overflow-hidden bg-[#040718]" //bg-[#020617]
         >
             {/* Grid */}
-            <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px]" />
+            {/* <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px]" /> */}
 
             {/* Content */}
-            <div className="relative z-10 h-full flex flex-col items-center justify-start pt-32 text-center px-6">
+            <div className="relative z-10 h-full flex flex-col items-center justify-start pt-66 text-center px-6">
+
+
 
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-3xl md:text-6xl lg:text-[80px] font-bold text-white leading-[1.05] max-w-5xl"
+                    className="text-2xl md:text-5xl lg:text-[60px] font-extrabold text-white leading-[1.05] max-w-5xl"
+        
                 >
                     Engineering the Digital Core <br className="hidden md:block" />
                     of Tomorrow.
@@ -36,7 +39,7 @@ export default function Hero() {
             </div>
 
             {/* Beam Image — Natural Ratio Controlled */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[78%] -translate-y-1/2 pointer-events-none z-0">
+            <div className="absolute left-1/2 -translate-x-1/2 top-[60%] -translate-y-1/2 pointer-events-none z-0">
                 <Image
                     src="/blue-energy.png"
                     alt="Energy Beam"
@@ -48,7 +51,7 @@ export default function Hero() {
             </div>
 
             {/* Button Centered in Beam Core */}
-            <div className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 z-10">
+            <div className="absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 z-10">
                 <a
                     href="#contact"
                     className="px-10 py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.25)]"
