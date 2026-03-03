@@ -1,19 +1,8 @@
 "use client";
 
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Code2 } from "lucide-react";
-import dynamic from "next/dynamic";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useRef } from "react";
-
-// Dynamically import the entire 3D canvas with SSR disabled
-const ThreeCanvas = dynamic(() => import("./3d/ThreeCanvas"), {
-    ssr: false,
-    loading: () => (
-        <div className="w-full h-full flex items-center justify-center">
-            <Code2 className="w-16 h-16 text-primary/50 animate-pulse" />
-        </div>
-    ),
-});
 
 export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -25,10 +14,14 @@ export default function Hero() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
+    // Parallax transforms for content depth
+    const textX = useTransform(mouseX, [-40, 40], [-8, 8]);
+    const textY = useTransform(mouseY, [-40, 40], [-8, 8]);
+
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            mouseX.set((e.clientX / window.innerWidth - 0.5) * 20);
-            mouseY.set((e.clientY / window.innerHeight - 0.5) * 20);
+            mouseX.set((e.clientX / window.innerWidth - 0.5) * 80);
+            mouseY.set((e.clientY / window.innerHeight - 0.5) * 80);
         };
         window.addEventListener("mousemove", handleMouseMove);
         return () => window.removeEventListener("mousemove", handleMouseMove);
@@ -38,111 +31,112 @@ export default function Hero() {
         <section
             ref={containerRef}
             id="home"
-            className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#020617] pt-20"
+            className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-[#020617] pt-10"
         >
-            {/* 1. Technical Grid & Glows Background */}
-            <div className="absolute inset-0 z-0">
-                <motion.div
-                    className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px]"
-                    style={{ x: mouseX, y: mouseY }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617]" />
+            {/* 1. Technical Grid & Horizon Glow - Match Mockup Exactly */}
+            <div className="absolute inset-0 z-10 pointer-events-none">
+                {/* Subtle Grid */}
+                <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-                {/* Radial Glows */}
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" />
+                {/* Massive Horizon Glow */}
+                <div className="absolute bottom-0 left-0 right-0 h-[50vh] bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-60" />
+                <div className="absolute -bottom-[25vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] rounded-[100%] bg-primary/30 blur-[120px]" />
             </div>
 
-            {/* 2. Hero Content Container */}
-            <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-                {/* Left Column: Content */}
+
+            {/* 2. Content Container */}
+            <div className="relative z-20 max-w-7xl mx-auto px-6 pt-20 pb-12 w-full text-center flex flex-col items-center">
                 <motion.div
-                    style={{ y: y1, opacity }}
-                    className="flex flex-col items-start text-left pt-10 lg:pt-0"
+                    style={{ y: y1, opacity, x: textX }}
+                    className="flex flex-col items-center"
                 >
-                    {/* Tech Badge */}
+                    {/* Tech Badge - Match Mockup styling */}
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xl mb-8"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-16"
                     >
-                        <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                        <span className="text-[10px] font-bold tracking-[3px] text-white/60 uppercase">
-                            Enterprise Tech Solutions
+                        <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
+                        <span className="text-[10px] font-bold tracking-[0.2em] text-white/60 uppercase">
+                            Next-Gen IT Infrastructure
                         </span>
                     </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                    {/* Headline - Branded Split with Flame Effect */}
+                    <motion.h1
+                        style={{ y: textY }}
+                        className="text-7xl md:text-[120px] font-black mb-10 flex items-center justify-center tracking-tight"
                     >
-                        <h1 className="mb-8 leading-[1] tracking-tighter text-6xl md:text-8xl font-black">
-                            Engineering <br />
-                            <span className="text-gradient">Digital Core</span>
-                        </h1>
+                        <span className="text-white">Info</span>
+                        <span
+                            className="text-flame ml-2"
+                            data-text="Bluera"
+                        >
+                            Bluera
+                        </span>
+                    </motion.h1>
 
-                        <p className="mb-12 text-lg md:text-xl text-white/60 max-w-xl leading-relaxed font-medium">
-                            We architect high-performance software systems and cloud ecosystems that dominate the competitive global IT landscape.
-                        </p>
-                    </motion.div>
-
-                    {/* Tech Stats Section */}
-                    <motion.div
+                    {/* Subheadline - Premium Bold Match Mockup */}
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="grid grid-cols-2 gap-8 md:gap-12 items-start"
+                        className="text-4xl md:text-5xl font-bold text-white mb-10 max-w-5xl tracking-tight leading-[1.1]"
+                    >
+                        Engineering the Digital Core <br className="hidden md:block" /> of Tomorrow.
+                    </motion.h2>
+
+                    {/* Secondary Description */}
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.8 }}
+                        className="text-base md:text-lg text-white/40 max-w-3xl mb-16 leading-relaxed"
+                    >
+                        We architect high-performance software systems and cloud ecosystems that power
+                        the world&apos;s most competitive digital enterprises.
+                    </motion.p>
+
+                    {/* Centered Tech Stats - Match Mockup Glassmorphism */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 1.2 }}
+                        className="w-full max-w-4xl px-8 py-8 rounded-[2.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-wrap items-center justify-between gap-8 md:gap-4"
                     >
                         {[
-                            { label: "Cloud Regions", value: "24+" },
-                            { label: "Security", value: "E2EE" },
-                            { label: "Performance", value: "10ms" },
-                            { label: "Uptime", value: "99.99%" }
+                            { label: "High-Performance", value: "10ms" },
+                            { label: "Military-Grade", value: "E2EE" },
+                            { label: "Full-Scaling", value: "24/7" },
+                            { label: "Global Reach", value: "Tier-4" }
                         ].map((stat, i) => (
-                            <div key={i} className="flex flex-col items-start border-l border-white/10 pl-4">
-                                <span className="text-2xl font-black text-white leading-none mb-1 ">{stat.value}</span>
-                                <span className="text-[9px] uppercase tracking-widest text-white/30 font-bold">{stat.label}</span>
+                            <div key={i} className="flex flex-col items-center flex-1 min-w-[120px]">
+                                <span className="text-3xl md:text-4xl font-extrabold text-white mb-1 tracking-tighter">{stat.value}</span>
+                                <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold">{stat.label}</span>
                             </div>
                         ))}
                     </motion.div>
                 </motion.div>
-
-                {/* Right Column: 3D Logo */}
-                <motion.div
-                    className="h-[400px] lg:h-[600px] relative w-full flex items-center justify-center pointer-events-none lg:pointer-events-auto"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2, delay: 0.4 }}
-                >
-                    <div className="absolute inset-0 bg-gradient-radial from-primary/10 to-transparent blur-3xl rounded-full" />
-                    <div className="w-full h-full relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                        <ThreeCanvas />
-                    </div>
-                </motion.div>
             </div>
 
-            {/* Scroll Indicator */}
+            {/* Mockup Scroll Indicator */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+                transition={{ delay: 2, duration: 1 }}
+                className="absolute bottom-10 left-10 flex items-center gap-3 z-30"
             >
-                <span className="text-[9px] uppercase tracking-[6px] text-white/20 font-bold">Initiate Scroll</span>
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                >
-                    <ChevronDown className="w-4 h-4 text-white/20" />
-                </motion.div>
+                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm">
+                    <ChevronDown className="w-5 h-5 text-white/20" />
+                </div>
+                <span className="text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold">Initiate</span>
             </motion.div>
 
             {/* Background Glows */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/4 pointer-events-none opacity-50" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/4 pointer-events-none opacity-30" />
         </section>
     );
 }
