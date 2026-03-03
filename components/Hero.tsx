@@ -13,7 +13,8 @@ export default function Hero() {
             {/* <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px]" /> */}
 
             {/* Content */}
-            <div className="relative z-10 h-full flex flex-col items-center justify-start pt-66 text-center px-6">
+
+            <div className="relative z-10 h-full flex flex-col items-center justify-start pt-67 text-center px-6">
 
 
 
