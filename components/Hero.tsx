@@ -19,7 +19,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl lg:text-[80px] font-bold text-white leading-[1.05] max-w-5xl"
+          className="text-3xl md:text-6xl lg:text-[80px] font-bold text-white leading-[1.05] max-w-5xl"
         >
           Engineering the Digital Core <br className="hidden md:block" />
           of Tomorrow.
