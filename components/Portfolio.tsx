@@ -4,6 +4,7 @@ import { GlassButton } from "@/components/ui/Buttons";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const PROJECTS = [
     {
@@ -52,7 +53,7 @@ export default function Portfolio() {
                             Our Standard of Excellence
                         </motion.h2>
                     </div>
-                    <motion.div
+                    {/* <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -60,7 +61,7 @@ export default function Portfolio() {
                         className="hidden md:block"
                     >
                         <GlassButton className="px-6 py-3 py-3 px-6 pb-3 pt-3">View All Projects</GlassButton>
-                    </motion.div>
+                    </motion.div> */}
                 </div>
 
                 {/* Featured Project Card (Standard Excellence Card equivalent) */}
@@ -92,12 +93,12 @@ export default function Portfolio() {
                             A comprehensive overhaul of a legacy enterprise system, focusing on data visualization, user efficiency, and modern aesthetic principles.
                         </p>
 
-                        <button className="flex items-center gap-3 text-white font-semibold group/btn hover:text-primary-light transition-colors">
+                        <Link href="/case-study" className="flex items-center gap-3 text-white font-semibold group/btn hover:text-primary-light transition-colors">
                             Read Case Study
                             <span className="p-2 bg-white/20 rounded-full group-hover/btn:bg-primary/40 group-hover/btn:translate-x-1 transition-all">
                                 <ArrowRight className="w-4 h-4" />
                             </span>
-                        </button>
+                        </Link>
                     </div>
                 </motion.div>
 
