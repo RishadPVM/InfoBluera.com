@@ -112,3 +112,13 @@ h4 {
   font-weight: 400;
   color: var(--color-text-tertiary);
 }
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
