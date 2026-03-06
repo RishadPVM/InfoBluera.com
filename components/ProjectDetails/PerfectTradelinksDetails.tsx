@@ -27,14 +27,15 @@ export default function PerfectTradelinksDetails() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#040718] to-[#0a0f2e] text-white overflow-hidden">
+            {/* Back Button */}
             <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="fixed top-8 left-8 z-50"
+                className="fixed top-4 left-4 md:top-8 md:left-8 z-50"
             >
                 <Link
                     href="/"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group text-sm md:text-base"
                 >
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                     Back
@@ -57,22 +58,23 @@ export default function PerfectTradelinksDetails() {
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
-                animate="visible"
-                className="relative z-10 max-w-6xl mx-auto px-6 py-32"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="relative z-10 max-w-6xl mx-auto px-6 py-24 md:py-32"
             >
-                <motion.div variants={itemVariants} className="mb-16">
-                    <h1 className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                <motion.div variants={itemVariants} className="mb-12 md:mb-16">
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
                         Perfect Tradelinks
                     </h1>
-                    <p className="text-2xl md:text-3xl text-green-400 font-semibold mb-6">
+                    <p className="text-xl sm:text-2xl md:text-3xl text-green-400 font-semibold mb-6">
                         Hardware Product Listing & Loyalty Rewards Mobile Application
                     </p>
-                    <div className="h-1 w-40 bg-gradient-to-r from-green-500 to-cyan-500 rounded-full" />
+                    <div className="h-1 w-24 md:w-40 bg-gradient-to-r from-green-500 to-cyan-500 rounded-full" />
                 </motion.div>
 
-                <motion.div variants={itemVariants} className="mb-16">
-                    <h2 className="text-2xl font-bold mb-8 text-white">Description</h2>
-                    <div className="space-y-6 text-white/80 leading-relaxed text-lg">
+                <motion.div variants={itemVariants} className="mb-12 md:mb-16">
+                    <h2 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-white">Description</h2>
+                    <div className="space-y-4 md:space-y-6 text-white/80 leading-relaxed text-base md:text-lg">
                         <p>
                             Perfect Tradelinks is a mobile application designed for a hardware store to digitally showcase its products while rewarding loyal customers such as electricians and contractors. The app allows users to browse hardware products and participate in a loyalty rewards system based on their purchases.
                         </p>
@@ -82,17 +84,17 @@ export default function PerfectTradelinksDetails() {
                     </div>
                 </motion.div>
 
-                <motion.div variants={itemVariants} className="mb-16">
-                    <h2 className="text-3xl font-bold mb-12 text-white border-b border-green-500/30 pb-4">
+                <motion.div variants={itemVariants} className="mb-12 md:mb-16">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-white border-b border-green-500/30 pb-4">
                         Case Study
                     </h2>
 
-                    <div className="mb-12">
-                        <h3 className="text-2xl font-bold mb-6 text-red-400 flex items-center gap-3">
+                    <div className="mb-8 md:mb-12">
+                        <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-red-400 flex items-center gap-3">
                             <span className="w-8 h-8 rounded-full bg-red-500/20 border border-red-500/50 flex items-center justify-center text-sm">⚠</span>
                             Problem
                         </h3>
-                        <div className="pl-11 space-y-4 text-white/80 leading-relaxed text-lg">
+                        <div className="pl-11 space-y-3 md:space-y-4 text-white/80 leading-relaxed text-base md:text-lg">
                             <p>
                                 Hardware stores often rely heavily on repeat customers like electricians and contractors, but managing customer loyalty programs manually can be difficult. Without a proper system, businesses struggle to track purchases, reward loyal customers, and maintain engagement.
                             </p>
@@ -102,12 +104,12 @@ export default function PerfectTradelinksDetails() {
                         </div>
                     </div>
 
-                    <div className="mb-12">
-                        <h3 className="text-2xl font-bold mb-6 text-green-400 flex items-center gap-3">
+                    <div className="mb-8 md:mb-12">
+                        <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-green-400 flex items-center gap-3">
                             <span className="w-8 h-8 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-sm">✓</span>
                             Solution
                         </h3>
-                        <div className="pl-11 space-y-4 text-white/80 leading-relaxed text-lg">
+                        <div className="pl-11 space-y-3 md:space-y-4 text-white/80 leading-relaxed text-base md:text-lg">
                             <p>
                                 The Perfect Tradelinks mobile application was developed to provide a digital platform where customers can view hardware products and participate in a structured loyalty rewards program.
                             </p>
@@ -118,9 +120,9 @@ export default function PerfectTradelinksDetails() {
                     </div>
                 </motion.div>
 
-                <motion.div variants={itemVariants} className="mb-16">
-                    <h2 className="text-3xl font-bold mb-8 text-white">Key Features</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <motion.div variants={itemVariants} className="mb-12 md:mb-16">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-white">Key Features</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         {[
                             "Hardware product listing and browsing",
                             "Bill upload for purchase verification",
@@ -132,25 +134,25 @@ export default function PerfectTradelinksDetails() {
                             <motion.div
                                 key={index}
                                 whileHover={{ x: 10 }}
-                                className="flex items-center gap-4 p-6 bg-gradient-to-br from-green-500/10 to-cyan-500/10 rounded-xl border border-green-500/20 hover:border-cyan-500/40 transition-all duration-300"
+                                className="flex items-center gap-4 p-4 md:p-6 bg-gradient-to-br from-green-500/10 to-cyan-500/10 rounded-xl border border-green-500/20 hover:border-cyan-500/40 transition-all duration-300"
                             >
                                 <div className="w-6 h-6 rounded-full bg-gradient-to-br from-green-400 to-cyan-400 flex items-center justify-center flex-shrink-0">
                                     <Check className="w-4 h-4 text-white" />
                                 </div>
-                                <p className="text-white/90">{feature}</p>
+                                <p className="text-white/90 text-sm md:text-base">{feature}</p>
                             </motion.div>
                         ))}
                     </div>
                 </motion.div>
 
-                <motion.div variants={itemVariants} className="mb-16">
-                    <h2 className="text-3xl font-bold mb-8 text-white">Technologies Used</h2>
-                    <div className="flex flex-wrap gap-4">
+                <motion.div variants={itemVariants} className="mb-12 md:mb-16">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-white">Technologies Used</h2>
+                    <div className="flex flex-wrap gap-3 md:gap-4">
                         {["Flutter", "Firebase"].map((tech, index) => (
                             <motion.div
                                 key={index}
                                 whileHover={{ scale: 1.05, y: -5 }}
-                                className="px-6 py-3 bg-gradient-to-r from-green-500/20 to-cyan-500/20 border border-green-500/30 rounded-lg font-semibold text-white hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
+                                className="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-green-500/20 to-cyan-500/20 border border-green-500/30 rounded-lg font-semibold text-white hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 text-sm md:text-base"
                             >
                                 {tech}
                             </motion.div>
@@ -158,22 +160,28 @@ export default function PerfectTradelinksDetails() {
                     </div>
                 </motion.div>
 
-                <motion.div variants={itemVariants} className="mt-20 pt-12 border-t border-green-500/20">
-                    <div className="flex flex-col md:flex-row gap-6 justify-center md:justify-start">
-                        <motion.button
+                <motion.div variants={itemVariants} className="mt-12 md:mt-20 pt-12 border-t border-green-500/20">
+                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center md:justify-start">
+                        <motion.a
+                            href="https://github.com/InfoBluera"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 bg-gradient-to-r from-green-500 to-cyan-500 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300"
+                            className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-green-500 to-cyan-500 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300 text-sm md:text-base text-center"
                         >
                             View Live Project
-                        </motion.button>
-                        <motion.button
+                        </motion.a>
+                        <motion.a
+                            href="https://wa.me/918129948257"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 border border-green-500 text-green-400 rounded-lg font-semibold hover:bg-green-500/10 transition-all duration-300"
+                            className="px-6 py-3 md:px-8 md:py-4 border border-green-500 text-green-400 rounded-lg font-semibold hover:bg-green-500/10 transition-all duration-300 text-sm md:text-base text-center"
                         >
                             Contact Us
-                        </motion.button>
+                        </motion.a>
                     </div>
                 </motion.div>
             </motion.div>
