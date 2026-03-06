@@ -87,7 +87,7 @@ export default function Portfolio() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
                 {/* Header with animation */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -100,16 +100,43 @@ export default function Portfolio() {
                     </div>
                     <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight">
                         <span className="bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
-                            Projects That
-                        </span>
-                        <br />
-                        <span className="bg-gradient-to-r from-accent via-primary-light to-accent bg-clip-text text-transparent">
-                            Made Impact
+                            Our Standard of Excellence
                         </span>
                     </h2>
-                    <p className="text-lg text-white/60 max-w-2xl mx-auto">
+                    <p className="text-md text-white/60 max-w-2xl mx-auto">
                         Experience our transformative digital solutions crafted for growth
                     </p>
+                </motion.div> */}
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-16 lg:mb-24 text-center max-w-4xl mx-auto px-4"
+                >
+
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm mb-6">
+                        <Zap className="w-4 h-4 text-accent" />
+                        <span className="text-xs sm:text-sm font-bold text-accent uppercase tracking-widest">
+                            Portfolio
+                        </span>
+                    </div>
+
+                    {/* Title */}
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight">
+                        <span className="bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
+                            Our Standard of Excellence
+                        </span>
+                    </h2>
+
+                    {/* Description */}
+                    <p className="text-sm sm:text-base lg:text-lg text-white/60 max-w-xl sm:max-w-2xl mx-auto leading-relaxed">
+                        Experience our transformative digital solutions crafted to drive growth,
+                        innovation, and measurable success for modern businesses.
+                    </p>
+
                 </motion.div>
 
                 {/* Featured Case Study Card */}
@@ -167,120 +194,104 @@ export default function Portfolio() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8"
+                        className="flex overflow-x-auto pb-12 gap-6 snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:pb-0 scrollbar-hide px-4 sm:px-0"
                     >
                         {PROJECTS.map((project, idx) => (
-                            <Link key={project.title} href={project.link}>
+                            <Link key={project.title} href={project.link} className="relative z-0 hover:z-50 flex-shrink-0 w-[85vw] sm:w-[400px] lg:w-auto snap-center">
                                 <motion.div
                                     variants={itemVariants}
+                                    whileHover={{
+                                        y: -20,
+                                        scale: 1.05,
+                                        transition: { duration: 0.4, ease: "easeOut" }
+                                    }}
                                     onMouseEnter={() => setHoveredIndex(idx)}
                                     onMouseLeave={() => setHoveredIndex(null)}
                                     className="group cursor-pointer h-full relative"
                                 >
                                     {/* Main Card */}
-                                    <div className="relative h-[380px] sm:h-[420px] rounded-2xl overflow-hidden backdrop-blur-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/4 transition-all duration-500"
+                                    <div className="relative h-full min-h-[450px] sm:min-h-[500px] rounded-3xl overflow-hidden glass transition-all duration-500 flex flex-col group-hover:bg-white/[0.03]"
                                         style={{
                                             borderColor: hoveredIndex === idx ? `${project.color}40` : undefined,
-                                            backgroundColor: hoveredIndex === idx ? `${project.color}08` : undefined,
+                                            boxShadow: hoveredIndex === idx ? `0 20px 40px -10px ${project.color}20` : undefined,
                                         }}
                                     >
-                                        {/* Image Section */}
-                                        <div className="relative h-1/2 overflow-hidden bg-gradient-to-br from-black/30 to-black/50">
+                                        {/* Top Image Section */}
+                                        <div className="relative h-48 sm:h-56 w-full overflow-hidden transition-all duration-500">
                                             <Image
                                                 src={project.image}
                                                 alt={project.title}
                                                 fill
-                                                className="object-cover group-hover:scale-125 transition-transform duration-700"
+                                                className="object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"
                                             />
-                                            
-                                            {/* Overlay Gradient */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-40 transition-opacity duration-500" />
+                                            {/* Overlay Gradient for Text Legibility */}
+                                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
 
-                                            {/* Badge */}
-                                            <motion.div
-                                                initial={{ opacity: 0, scale: 0.8 }}
-                                                whileInView={{ opacity: 1, scale: 1 }}
-                                                className="absolute top-3 right-3"
-                                            >
-                                                <div className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 border border-white/40 text-white backdrop-blur-md">
-                                                    {project.badge}
+                                            {/* Live Indicator */}
+                                            <div className="absolute top-4 right-4">
+                                                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
+                                                    <span className="relative flex h-2 w-2">
+                                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                                    </span>
+                                                    <span className="text-[10px] font-bold text-white tracking-widest uppercase">Live</span>
                                                 </div>
-                                            </motion.div>
+                                            </div>
                                         </div>
 
                                         {/* Content Section */}
-                                        <div className="relative h-1/2 p-6 flex flex-col justify-between">
-                                            <div>
-                                                <motion.p
-                                                    initial={{ opacity: 0.6 }}
-                                                    whileHover={{ opacity: 1 }}
-                                                    className="text-xs font-black tracking-widest uppercase mb-3 transition-colors duration-300"
-                                                    style={{ color: project.color }}
-                                                >
-                                                    {project.category.substring(0, 20)}...
-                                                </motion.p>
-                                                <motion.h4
-                                                    initial={{ opacity: 0.9 }}
-                                                    whileHover={{ opacity: 1 }}
-                                                    className="text-xl sm:text-2xl font-black text-white leading-tight mb-2 transition-all duration-300"
-                                                >
+                                        <div className="flex flex-col items-center text-center p-6 gap-3 sm:gap-4 flex-grow">
+                                            <div className="flex flex-col gap-1">
+                                                <h4 className="text-xl sm:text-2xl font-bold text-white transition-colors duration-300">
                                                     {project.title}
-                                                </motion.h4>
+                                                </h4>
+                                                <p className="text-[10px] sm:text-xs font-black tracking-[0.1em] uppercase"
+                                                    style={{ color: project.color }}>
+                                                    {project.category}
+                                                </p>
                                             </div>
 
-                                            {/* Bottom Action */}
-                                            <motion.div
-                                                initial={{ opacity: 0.5 }}
-                                                whileHover={{ opacity: 1 }}
-                                                className="flex items-center justify-between group/btn"
-                                            >
-                                                <span className="text-xs font-semibold text-white/60 group-hover/btn:text-white transition-colors">
-                                                    Explore
-                                                </span>
+                                            <p className="text-white/60 text-xs sm:text-sm leading-relaxed max-w-[280px]">
+                                                Experience our transformative digital solution crafted for {project.title}&apos;s success.
+                                            </p>
+
+                                            {/* Action Button */}
+                                            <div className="mt-auto pt-4">
                                                 <motion.div
-                                                    whileHover={{ scale: 1.2, rotate: 45 }}
-                                                    whileTap={{ scale: 0.9 }}
-                                                    className="w-9 h-9 rounded-full border-2 flex items-center justify-center transition-all duration-300"
+                                                    className="px-6 sm:px-8 py-2 sm:py-3 rounded-xl font-bold text-xs sm:text-sm bg-primary/20 border border-primary/30 text-white transition-all duration-300 hover:bg-primary"
                                                     style={{
-                                                        borderColor: project.color,
-                                                        backgroundColor: `${project.color}15`,
+                                                        backgroundColor: hoveredIndex === idx ? `${project.color}30` : undefined,
+                                                        borderColor: hoveredIndex === idx ? `${project.color}40` : undefined,
                                                     }}
                                                 >
-                                                    <ArrowUpRight className="w-4 h-4" style={{ color: project.color }} />
+                                                    Learn more
                                                 </motion.div>
-                                            </motion.div>
+                                            </div>
                                         </div>
 
-                                        {/* Hover Glow Effect */}
-                                        <motion.div
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: hoveredIndex === idx ? 0.5 : 0 }}
-                                            className="absolute -inset-0.5 blur-xl rounded-2xl pointer-events-none -z-10"
-                                            style={{
-                                                background: `linear-gradient(135deg, ${project.color}40, transparent)`,
-                                            }}
+                                        {/* Project Accent Highlight */}
+                                        <div
+                                            className="absolute bottom-0 left-0 right-0 h-1 transition-all duration-500 opacity-60 group-hover:opacity-100"
+                                            style={{ backgroundColor: project.color }}
                                         />
                                     </div>
+
+                                    {/* Hover Glow Effect (Behind Card) */}
+                                    {hoveredIndex === idx && (
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            className="absolute -inset-4 blur-2xl rounded-3xl pointer-events-none -z-10"
+                                            style={{
+                                                background: `radial-gradient(circle at center, ${project.color}15, transparent 70%)`,
+                                            }}
+                                        />
+                                    )}
                                 </motion.div>
                             </Link>
                         ))}
                     </motion.div>
                 </div>
-
-                {/* CTA Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="text-center py-12"
-                >
-                    <p className="text-white/70 mb-6">Want to see more?</p>
-                    <Link href="#contact" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-accent to-primary-light text-black font-bold hover:shadow-xl hover:shadow-accent/40 transition-all duration-300 group">
-                        Get In Touch
-                        <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </Link>
-                </motion.div>
             </div>
         </section>
     );
