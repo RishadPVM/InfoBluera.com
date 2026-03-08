@@ -82,13 +82,7 @@ export default function Footer() {
                         </p>
 
                         <div className="space-y-6">
-                            <a href="#" className="group flex items-center gap-6 p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 hover:border-primary/40 transition-colors">
-                                <MapPin className="w-6 h-6 text-primary-light" />
-                                <div>
-                                    <h4 className="text-caption font-bold uppercase tracking-wider mb-1">Headquarters</h4>
-                                    <p className="text-white font-medium">Kerala, India</p>
-                                </div>
-                            </a>
+                            
 
                             <a href="mailto:codelinehelpdesk@gmail.com" className="group flex items-center gap-6 p-4 border border-white/5 rounded-2xl hover:bg-white/5 transition-colors">
                                 <Mail className="w-6 h-6 text-text-secondary group-hover:text-primary-light transition-colors" />
