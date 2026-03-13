@@ -2,16 +2,16 @@
 
 import { GradientButton } from "@/components/ui/Buttons";
 import { motion } from "framer-motion";
-import { CheckCircle2, Code2, Mail, MapPin, Phone } from "lucide-react";
+import { CheckCircle2, Code2, Mail, Phone } from "lucide-react";
 import { useState } from "react";
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
-const SOCIAL_LINKS = [
-    { icon: FaLinkedin, href: "https://linkedin.com" },
-    { icon: FaTwitter, href: "https://twitter.com" },
-    { icon: FaInstagram, href: "https://instagram.com" },
-    { icon: FaGithub, href: "https://github.com" },
-];
+// const SOCIAL_LINKS = [
+//     { icon: FaLinkedin, href: "https://linkedin.com" },
+//     { icon: FaTwitter, href: "https://twitter.com" },
+//     { icon: FaInstagram, href: "https://instagram.com" },
+//     { icon: FaGithub, href: "https://github.com" },
+// ];
 
 export default function Footer() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -190,7 +190,7 @@ export default function Footer() {
                         © {new Date().getFullYear()} InfoBluera. All rights reserved.
                     </p>
 
-                    <div className="flex items-center gap-4">
+                    {/* <div className="flex items-center gap-4">
                         {SOCIAL_LINKS.map((social, idx) => (
                             <a
                                 key={idx}
@@ -202,7 +202,7 @@ export default function Footer() {
                                 <social.icon className="w-4 h-4" />
                             </a>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
 
             </div>
