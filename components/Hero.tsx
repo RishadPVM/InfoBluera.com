@@ -63,29 +63,32 @@ export default function Hero() {
             </div>
 
             {/* Stats */}
-            <div className="absolute bottom-16 w-full flex justify-center gap-16 text-center z-10">
-                {[
-                    { label: "High-Performance", value: "10ms" },
-                    { label: "Military-Grade", value: "E2EE" },
-                    { label: "Full-Scaling", value: "24/7" },
-                    { label: "Global Reach", value: "Tier-4" }
-                ].map((stat, i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.6 + i * 0.1 }}
-                        className="flex flex-col items-center"
-                    >
-                        <span className="text-2xl md:text-3xl font-bold text-white">
-                            {stat.value}
-                        </span>
-                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 mt-1">
-                            {stat.label}
-                        </span>
-                    </motion.div>
-                ))}
-            </div>
+            <div className="absolute bottom-10 md:bottom-16 w-full z-10 flex justify-center">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center max-w-4xl w-full">
+    {[
+      { label: "High-Performance", value: "10ms" },
+      { label: "Military-Grade", value: "E2EE" },
+      { label: "Full-Scaling", value: "24/7" },
+      { label: "Global Reach", value: "Tier-4" }
+    ].map((stat, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 + i * 0.1 }}
+        className="flex flex-col items-center"
+      >
+        <span className="text-xl md:text-3xl font-bold text-white">
+          {stat.value}
+        </span>
+
+        <span className="text-[9px] md:text-[10px] uppercase tracking-[0.25em] md:tracking-[0.3em] text-white/40 mt-1">
+          {stat.label}
+        </span>
+      </motion.div>
+    ))}
+  </div>
+</div>
 
         </section>
     );
