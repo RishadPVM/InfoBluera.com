@@ -2,16 +2,16 @@
 
 import { GradientButton } from "@/components/ui/Buttons";
 import { motion } from "framer-motion";
-import { CheckCircle2, Code2, Mail, MapPin, Phone } from "lucide-react";
+import { CheckCircle2, Code2, Mail, Phone } from "lucide-react";
 import { useState } from "react";
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
-const SOCIAL_LINKS = [
-    { icon: FaLinkedin, href: "https://linkedin.com" },
-    { icon: FaTwitter, href: "https://twitter.com" },
-    { icon: FaInstagram, href: "https://instagram.com" },
-    { icon: FaGithub, href: "https://github.com" },
-];
+// const SOCIAL_LINKS = [
+//     { icon: FaLinkedin, href: "https://linkedin.com" },
+//     { icon: FaTwitter, href: "https://twitter.com" },
+//     { icon: FaInstagram, href: "https://instagram.com" },
+//     { icon: FaGithub, href: "https://github.com" },
+// ];
 
 export default function Footer() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -82,13 +82,7 @@ export default function Footer() {
                         </p>
 
                         <div className="space-y-6">
-                            <a href="#" className="group flex items-center gap-6 p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 hover:border-primary/40 transition-colors">
-                                <MapPin className="w-6 h-6 text-primary-light" />
-                                <div>
-                                    <h4 className="text-caption font-bold uppercase tracking-wider mb-1">Headquarters</h4>
-                                    <p className="text-white font-medium">Kerala, India</p>
-                                </div>
-                            </a>
+                            
 
                             <a href="mailto:codelinehelpdesk@gmail.com" className="group flex items-center gap-6 p-4 border border-white/5 rounded-2xl hover:bg-white/5 transition-colors">
                                 <Mail className="w-6 h-6 text-text-secondary group-hover:text-primary-light transition-colors" />
@@ -196,7 +190,7 @@ export default function Footer() {
                         © {new Date().getFullYear()} InfoBluera. All rights reserved.
                     </p>
 
-                    <div className="flex items-center gap-4">
+                    {/* <div className="flex items-center gap-4">
                         {SOCIAL_LINKS.map((social, idx) => (
                             <a
                                 key={idx}
@@ -208,7 +202,7 @@ export default function Footer() {
                                 <social.icon className="w-4 h-4" />
                             </a>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
 
             </div>
